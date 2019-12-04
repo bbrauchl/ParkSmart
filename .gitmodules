@@ -1,3 +1,6 @@
 [submodule "CurveZMQ/pyzmq"]
 	path = CurveZMQ/pyzmq
 	url = https://github.com/zeromq/pyzmq.git
+[submodule "CurveZMQ/imagezmq"]
+	path = CurveZMQ/imagezmq
+	url = https://github.com/jeffbass/imagezmq.git
