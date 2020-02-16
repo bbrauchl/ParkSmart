@@ -19,11 +19,18 @@ ParkSmart_url_local = 'http://localhost/ParkSmart/'
 # Call the web update API. At the time of writing, the web server
 # will recieve the json, decode it, and respond with a string of
 # from the php reconstruction of the sent object.
-def update(item, debug : bool = False):
+def update(Lot : str, Space : int, IsOccupied : bool, Confidence : float = 0, Type : str = 'student', Extra=None, debug : bool = False):
     api_url = ParkSmart_url_local if (debug) else ParkSmart_url
     api_url += 'api/update.php'
-    r = requests.post(api_url, data={'json_payload':json.dumps(item)} )
-    print(r.text)
+    item = {
+        'Lot' : Lot,
+        'Space' : Space,
+        'IsOccupied' : IsOccupied,
+        'Confidence' : Confidence,
+        'Type' : Type,
+        'Extra' : Extra if type(Extra) is str else '',
+        }
+    return requests.post(api_url, data={'payload':json.dumps(item)} )
     
 # Call a sql query using the sql API. Pass in the required information for the
 # server to access the database. for the server to access a database located
@@ -40,3 +47,16 @@ def sql(sql_query : str, sql_servername='localhost', sql_username='ParkSmart', s
         'sql_database':sql_database}
     r = requests.post(api_url, data=payload);
     return r
+
+# calls the echo page. this will take a dict data and send it to the
+# server, which sill echo its unpacking of the data
+def echo(data, debug : bool = False):
+    api_url = ParkSmart_url_local if (debug) else ParkSmart_url
+    api_url += '/api/echo.php'
+    #format data in an acceptable format
+    if (type(data) is not dict):
+        payload = {'payload' : json.dumps(data)}
+    else:
+        payload = { key : json.dumps(element) for key, element in data.items() }
+        
+    return requests.post(api_url, data=payload)
