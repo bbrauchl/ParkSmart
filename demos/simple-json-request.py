@@ -22,9 +22,16 @@ except:
     print('error, could not extract server response as JSON')
 else:
     print('Success!')
-print('printing contents of space 0 recieved object:')
+
+print("")  
+print('printing{} contents of received object:'.format(" some of" if len(current_database) > 6 else ""))
 # get the current state of Parking space 0 (the one that was updated above)
-print(current_database[0])
+if len(current_database) > 6:
+    print(current_database[:3])
+    print("...")
+    print(current_database[-3:])
+else:
+    print(current_database)
 
 #test of the echo api
 print("")
@@ -37,3 +44,4 @@ test_object = {
     }
 resp = ParkSmart.echo(test_object, debug=True)
 print(resp.text)
+

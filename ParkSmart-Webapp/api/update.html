@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 500;
+        }
+        
+        td, th {
+          border: 1px solid black;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>ParkSmart Update API</h1>
+    <p>It looks like you have found the ParkSmart Update API.</p>
+    <table>
+        <tr>
+            <th colspan="4">Update API Usage:</th>
+        </tr>
+        <tr>
+            <th id="url" colspan="4">Please submit parking information updates as a html post request to</th>
+        </tr>
+        <tr>
+            <th>Key</th>
+            <th>Required?</th>
+            <th>Type</th>
+            <th>Content</th>
+        </tr>
+        <tr>
+            <td>'payload'</td>
+            <td>Yes</td>
+            <td>JSON-encoded String</td>
+            <td>JSON-encoded Array of <u><b>ParkSmart ParkingSpaceUpdate</b></u> Objects</td>
+        </tr>
+        <tr>
+            <th colspan="4"></th>
+        </tr>
+        <tr>
+            <th colspan="4">ParkSmart ParkingSpaceUpdate object</th>
+        </tr>
+        <tr>
+            <th>Key</th>
+            <th>Required?</th>
+            <th>Type</th>
+            <th>Content</th>
+        </tr>
+        <tr>
+            <td>'Lot'</td>
+            <td>Yes</td>
+            <td>String</td>
+            <td>Parking Lot Table name in ParkSmart MySQL database. example: 'Lot_D'</td>
+        </tr>
+        <tr>
+            <td>'Space'</td>
+            <td>Yes</td>
+            <td>Integer</td>
+            <td>Parking Space index to update</td>
+        </tr>
+        <tr>
+            <td>'IsOccupied'</td>
+            <td>Yes</td>
+            <td>Boolean</td>
+            <td>Occupency state of the parking spot. A value of '1' means the spot is occupied whereas a value of '0' implys the spot is vacent</td>
+        </tr>
+        <tr>
+            <td>'Confidence'</td>
+            <td>Yes</td>
+            <td>Float</td>
+            <td>Confidence of the inference on the spot. The value be between 0 and 1</td>
+        </tr>
+        <tr>
+            <td>'Type'</td>
+            <td>Yes</td>
+            <td>Enum</td>
+            <td>Specifies the type of parking space. Acceptable Values: 'student', 'faculty', 'visitor', 'handicap', 'electric-vehicle'</td>
+        </tr>
+        <tr>
+            <td>'Extra'</td>
+            <td>No</td>
+            <td>String</td>
+            <td>Catch-all for any extra data that needs to be attached to a specific space in the database</td>
+        </tr>
+        <tr>
+            <th colspan="4"></th>
+        </tr>
+    </table>
+
+    <div>
+        <h3>Example (Python)</h3>
+        <div>
+            <span>
+                <span>import </span>
+                <span>requests</span>
+            </span>
+            <br>
+            <span>
+                <span>import </span>
+                <span>json</span>
+            </span>
+            <br>
+            <br>
+            <span>
+                <span>url = </span>
+                <span id="demourl"></span>
+            </span>
+            <br>
+            <span>update_item = {</span>
+            <br>
+            <span style="margin-left:2em">
+                <span>'Lot' </span>
+                <span>: 'Lot_D',</span>
+            </span>
+            <br>
+            <span style="margin-left:2em">
+                <span>'Space' </span>
+                <span>: 12,</span>
+            </span>
+            <br>
+            <span style="margin-left:2em">
+                <span>'IsOccupied' </span>
+                <span>: True,</span>
+            </span>
+            <br>
+            <span style="margin-left:2em">
+                <span>'Confidence' </span>
+                <span>: 0.75,</span>
+            </span>
+            <br>
+            <span style="margin-left:2em">
+                <span>'Type' </span>
+                <span>: 'student',</span>
+            </span>
+            <br>
+            <span style="margin-left:2em">
+                <span>'Extra' </span>
+                <span>: 'Parked Illegally',</span>
+            </span>
+            <br>
+            <span style="margin-left:2em">
+                <span>}</span>
+            </span>
+            <br>
+            <br>
+            <span>
+                <span>print(requests.post(url, data={</span>
+                <span>'payload'</span>
+                <span>:json.dumps(update_item)}).text)</span>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    const url = window.location.href.replace(".html", ".php");
+    document.getElementById("url").innerHTML += "<br><a href=" + url + ">" + url + "</a>";
+    document.getElementById("demourl").innerHTML = url;
+</script>

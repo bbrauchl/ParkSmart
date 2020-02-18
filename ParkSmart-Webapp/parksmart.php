@@ -22,7 +22,7 @@ tr:nth-child(even) {
 <body>
 
 <form method="get">
-host: <input type="text" id="host" name="host"/>
+<input type="text" id="host" name="host" value=<?= array_key_exists("host", $_GET) ? $_GET["host"] : ""; ?> />
 <input type="submit" value="Go"/>
 <input type="submit" name="history" value="Show All History"/>
 </form>
@@ -40,8 +40,19 @@ function findGetParameter(parameterName) {
         });
     return result;
 }
-document.getElementById('host').value = findGetParameter("host");
+//document.getElementById('host').value = findGetParameter("host");
 </script>
+
+<script src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+<script>
+  function getCurrentWeather() {
+    const api_key = "2c9454b4193e9aba28622a2603bc5f71";
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Dearborn&APPID=" + api_key, function(json){
+      document.getElementById("weatherjson").innerHTML = JSON.stringify(json);
+    });
+  }
+</script>
+
 <a href="parksmart.php">Reset</a><br>
 
 <?php
@@ -80,6 +91,7 @@ if (array_key_exists("host", $_GET) && $_GET["host"] !== "") {
 }
 echo '</table>'
 ?>
-
+<p id='weatherjson'>help</p>
+<script>getCurrentWeather();</script>
 </body>
 </html>
