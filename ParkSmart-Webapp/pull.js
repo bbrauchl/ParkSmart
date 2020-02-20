@@ -52,7 +52,7 @@ async function pull(lot) {
     return JSON.parse(r.responseText);
 }
 
-async function main() {
+async function demo() {
     const obj = await pull('Lot_D', debug);
     Object.keys(obj).forEach(key => {
         obj[key].forEach(space => {
@@ -61,4 +61,5 @@ async function main() {
     });
 }
 
-main();
+exports = { pullRequest, pullAndPrint, pull, demo };
+demo();
