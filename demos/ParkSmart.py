@@ -44,7 +44,7 @@ def pull(Lot : str, getIsOccupied : bool = True, getConfidence : bool = False, g
     options = {
         'lot': Lot,
         'getIsOccupied':getIsOccupied,
-        'getConfidence':getConfigence,
+        'getConfidence':getConfidence,
         'getType':getType,
         'getExtra':getExtra,
         'getStartTimestamp':getStartTimestamp,
