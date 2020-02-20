@@ -2,6 +2,7 @@
 
 const helpers = require('./helpers.js');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const $ = require('jquery');
 const debug = true;
 
 function pullRequest(lot, getIsOccupied = true, getConfidence = false, getType = false, getExtra = false,
@@ -41,15 +42,15 @@ function pullRequest(lot, getIsOccupied = true, getConfidence = false, getType =
 
 async function pullAndPrint(lot) {
     console.log("pull_and_print");
-    let r = await pullRequest(lot, debug=debug);
-    console.log(r);
-    console.log(r.response);
+    const xhr = await pullRequest(lot, debug=debug);
+    console.log(xhr);
+    console.log(xhr.response);
 }
 
 async function pull(lot) {
     console.log(pull);
-    const r = await pullRequest(lot, debug);
-    return JSON.parse(r.responseText);
+    const xhr = await pullRequest(lot, debug);
+    return JSON.parse(xhr.responseText);
 }
 
 async function demo() {
@@ -62,4 +63,3 @@ async function demo() {
 }
 
 exports = { pullRequest, pullAndPrint, pull, demo };
-demo();
