@@ -1,9 +1,5 @@
 'use strict';
 
-const helpers = require('./helpers.js');
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const $ = require('jquery');
-
 const url = "http://api.openweathermap.org/data/2.5/weather"
 const api_query_location = "q=";
 const api_api_key = "APPID=", api_key = "2c9454b4193e9aba28622a2603bc5f71";
@@ -20,7 +16,7 @@ function get_weather(query) {
         xhr.onload = function() {
             if (xhr.status >= 200 && xhr.status <= 300) {
                 console.log("OpenWeatherMap Response Loaded Successfully!");
-                resolve(JSON.parse(xhr.responseText));
+                resolve(xhr.response);
             }
         };
         xhr.onerror = function() {
@@ -42,12 +38,10 @@ async function get_Dearborn_weather() {
 
 async function print_weather(query_location) {
     const weather = await get_weather(query_location);
-    console.log(JSON.stringify(weather));
+    console.log(weather);
 }
 
 async function print_Dearborn_weather() {
     const weather = await get_Dearborn_weather();
-    console.log(JSON.stringify(weather));
+    console.log(weather);
 }
-
-exports = {get_weather, get_Dearborn_weather, print_weather, print_Dearborn_weather};

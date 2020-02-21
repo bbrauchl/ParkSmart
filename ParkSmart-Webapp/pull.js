@@ -1,14 +1,25 @@
 'use strict';
 
-const helpers = require('./helpers.js');
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const $ = require('jquery');
 const debug = true;
+const ParkSmartURL = 'http://lamp.engin.umd.umich.edu/~bbrauchl/ParkSmart/';
+const ParkSmartURL_Local = 'http://localhost/ParkSmart/';
 
-function pullRequest(lot, getIsOccupied = true, getConfidence = false, getType = false, getExtra = false,
+function strip_url_filename(url) {
+    let len = url.lastIndexOf('/');
+    len = len == -1 ? url.length : len + 1;
+    return url.substring(0, len);
+}
+
+function get_url() {
+    let url;
+    url = (debug) ? ParkSmartURL_Local : ParkSmartURL;
+    return url;
+}
+
+function pull_request(lot, getIsOccupied = true, getConfidence = false, getType = false, getExtra = false,
                 getStartTimestamp = false, getEndTimestamp = false) {
     return new Promise(function (resolve, reject) {
-        const endpoint = helpers.getUrl(debug) + 'api/pull.php';
+        const endpoint = get_url() + 'api/pull.php';
         console.log(endpoint);
         const payload = {"lot":lot,
             "getIsOccupied":getIsOccupied,
@@ -26,7 +37,7 @@ function pullRequest(lot, getIsOccupied = true, getConfidence = false, getType =
             console.log("onload")
             if (xhr.status >= 200 && xhr.status <= 300) {
                 console.log("load status is good")
-                resolve(xhr);
+                resolve(xhr.response);
             }
         };
         xhr.onerror = function() {
@@ -40,26 +51,24 @@ function pullRequest(lot, getIsOccupied = true, getConfidence = false, getType =
      })
 }
 
-async function pullAndPrint(lot) {
+async function pull_and_print(lot) {
     console.log("pull_and_print");
-    const xhr = await pullRequest(lot, debug=debug);
+    const xhr = await pull_request(lot, debug=debug);
     console.log(xhr);
-    console.log(xhr.response);
+    console.log(JSON.stringify(xhr.response));
 }
 
 async function pull(lot) {
-    console.log(pull);
-    const xhr = await pullRequest(lot, debug);
-    return JSON.parse(xhr.responseText);
+    console.log("pull");
+    const xhr = await pull_request(lot, debug);
+    return xhr;
 }
 
 async function demo() {
-    const obj = await pull('Lot_D', debug);
+    const obj = await pull('Lot_D');
     Object.keys(obj).forEach(key => {
         obj[key].forEach(space => {
            console.log("space " + space["Space"] + " is " + (Number(space["IsOccupied"]) ? "occupied" : "vacent")); 
         });
     });
 }
-
-exports = { pullRequest, pullAndPrint, pull, demo };

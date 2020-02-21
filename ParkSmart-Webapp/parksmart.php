@@ -22,7 +22,7 @@ tr:nth-child(even) {
 <body>
 
 <form method="get">
-<input type="text" id="host" name="host" value=<?= array_key_exists("host", $_GET) ? $_GET["host"] : ""; ?> />
+<input type="text" id="host" name="host" value=<?= array_key_exists("host", $_GET) ? $_GET["host"] : ""; ?> >
 <input type="submit" value="Go"/>
 <input type="submit" name="history" value="Show All History"/>
 </form>
@@ -91,7 +91,27 @@ if (array_key_exists("host", $_GET) && $_GET["host"] !== "") {
 }
 echo '</table>'
 ?>
-<p id='weatherjson'>help</p>
-<script>getCurrentWeather();</script>
+<p id="weather"></p>
+<br>
+<p id="parking"></p>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+<script src="weather.js"></script>
+<script src="pull.js"></script>
+<script>
+  function handle_weather(weather_data) {
+
+  }
+
+  get_Dearborn_weather().then((val) => {
+    $("#weather").text(JSON.stringify(val));
+    if (parseInt(val.visibility) < 16000) {
+      alert("visibility is poor, results may be inaccurate.");
+    }
+  });
+  pull('Lot_D').then((resp) => {
+    $("#parking").text(JSON.stringify(resp));
+  });
+
+</script>
 </body>
 </html>
