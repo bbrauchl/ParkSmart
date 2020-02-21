@@ -29,6 +29,10 @@
         <tr>
             <th id="url" colspan="4">Please submit parking information updates as a html post request to</th>
         </tr>
+        <tr><th colspan="4"></th></tr>
+        <tr>
+            <th colspan="4">Calling Parameters</th>
+        </tr>
         <tr>
             <th>Key</th>
             <th>Required?</th>
@@ -38,8 +42,22 @@
         <tr>
             <td>'payload'</td>
             <td>Yes</td>
-            <td>JSON-encoded String</td>
+            <td>JSON-encoded Array</td>
             <td>JSON-encoded Array of <u><b>ParkSmart ParkingSpaceUpdate</b></u> Objects</td>
+        </tr>
+        <tr>
+            <th colspan="4"></th>
+        </tr>
+        <tr>
+            <th colspan="4">Return Parameters</th>
+        </tr>
+        <tr>
+            <th>Format</th>
+            <th colspan="3">Contents</th>
+        </tr>
+        <tr>
+            <td>Plaintext String</td>
+            <td colspan="3">Status Text containing either "Success!" or an error message</td>
         </tr>
         <tr>
             <th colspan="4"></th>
@@ -162,6 +180,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     const url = window.location.href.replace(".html", ".php");
-    document.getElementById("url").innerHTML += "<br><a href=" + url + ">" + url + "</a>";
+    document.getElementById("url").innerHTML += "<br>API endpoint: <a href=" + url + ">" + url + "</a>";
     document.getElementById("demourl").innerHTML = url;
 </script>
