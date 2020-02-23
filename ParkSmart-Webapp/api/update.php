@@ -35,12 +35,20 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
         if (!array_key_exists('Extra', $element)) {
             $element->Extra = '';
         }
+        //fix for python
+        if (!array_key_exists('IsOccupied', $element) || $element->IsOccupied == NULL) {
+            $element->IsOccupied = 0;
+        }
 
         //create SQL update string
         try {
-            $sql_query = "UPDATE $element->Lot SET ";
-            $sql_query .= "IsOccupied=$element->IsOccupied, Confidence=$element->Confidence, Type='$element->Type', Extra='$element->Extra' WHERE Space=$element->Space";
+            //expire previous entry
+            $sql_query = "UPDATE " . $element->Lot . " SET end_timestamp = NOW() WHERE Space = $element->Space AND end_timestamp > NOW();";
             $conn = get_sql_connection($sql_server);  
+            $result = $conn->query($sql_query);
+            //set new entry
+            $sql_query = "INSERT INTO ".$element->Lot."(Space, IsOccupied, Confidence, Type, Extra) ";
+            $sql_query .= "VALUES ($element->Space, $element->IsOccupied, $element->Confidence, '$element->Type', '$element->Extra');";
             $result = $conn->query($sql_query);
             if(!$result) {
                 throw new Exception("SQL Update Failed");

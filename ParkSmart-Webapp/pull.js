@@ -1,6 +1,6 @@
 'use strict';
 
-const debug = true;
+const debug = false;
 const ParkSmartURL = 'http://lamp.engin.umd.umich.edu/~bbrauchl/ParkSmart/';
 const ParkSmartURL_Local = 'http://localhost/ParkSmart/';
 
@@ -11,8 +11,7 @@ function strip_url_filename(url) {
 }
 
 function get_url() {
-    let url;
-    url = (debug) ? ParkSmartURL_Local : ParkSmartURL;
+    let url = "./"
     return url;
 }
 
