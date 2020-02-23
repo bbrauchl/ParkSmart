@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             $conn->close();
             die("Error! Lot name specified in incorrect format. Should be provided as a string.");
         }
-        if(!in_array(strtolower($lot), $all_tables)) {
+        if(!in_array($lot, $all_tables)) {
             $conn->close();
             die("Error! User specified Parking lot name that does not exist in the database!");
         }
-        $sql = "SELECT * FROM ".strtolower($lot)." WHERE start_timestamp <= NOW() && end_timestamp >= NOW();"; //todo: add "where" parameter to get the correct time entries
+        $sql = "SELECT * FROM ".$lot. " WHERE start_timestamp <= NOW() && end_timestamp >= NOW();"; //todo: add "where" parameter to get the correct time entries
         $result = $conn->query($sql); 
         if(!$result) {
             $conn->close();
