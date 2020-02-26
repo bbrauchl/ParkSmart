@@ -1,5 +1,9 @@
 <?php 
 
+// allow access from any hosts. This makes development from localhost convienient but should be
+// taken out later for security purposes.
+header("Access-Control-Allow-Origin: *"); 
+
 if ($_SERVER['REQUEST_METHOD']  === 'POST') {
   $servername = array_key_exists("sql_servername", $_POST) ? filter_var($_POST["sql_servername"], FILTER_SANITIZE_URL) : "localhost";
   $username = array_key_exists("sql_username", $_POST) ? filter_var($_POST["sql_username"], FILTER_SANITIZE_STRING) : "ParkSmart";
