@@ -49,6 +49,8 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
     }
     $conn->close();
     
+    //set the correct headers for a json response
+    header('Content-type:application/json;charset=utf-8');
     //success!!
     echo json_encode($response);
 }

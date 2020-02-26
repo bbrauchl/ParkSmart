@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
     while($row = $result->fetch_assoc()) {
       $myArray[] = $row;
     }     
+    //set the correct headers for the response
+    header('Content-type:application/json;charset=utf-8');
     echo json_encode($myArray);
     $result->close(); 
     $conn->close();
