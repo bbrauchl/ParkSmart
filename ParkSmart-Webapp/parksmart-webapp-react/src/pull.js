@@ -1,16 +1,11 @@
-'use strict';
 
-const debug = false;
+const debug = true;
 const apiUrl = 'http://lamp.engin.umd.umich.edu/~bbrauchl/';
 
-function strip_url_filename(url) {
-    let len = url.lastIndexOf('/');
-    len = len == -1 ? url.length : len + 1;
-    return url.substring(0, len);
-}
-
 function get_url() {
-    return apiUrl;
+    if (debug) {
+        return apiUrl;
+    }
     return "./";
 }
 
@@ -49,20 +44,20 @@ function pull_request(lot, getIsOccupied = true, getConfidence = false, getType 
      })
 }
 
-async function pull_and_print(lot) {
+export async function pull_and_print(lot) {
     console.log("pull_and_print");
-    const xhr = await pull_request(lot, debug=debug);
+    const xhr = await pull_request(lot);
     console.log(xhr);
     console.log(JSON.stringify(xhr.response));
 }
 
 export async function pull(lot) {
     console.log("pull");
-    const xhr = await pull_request(lot, debug);
+    const xhr = await pull_request(lot);
     return xhr;
 }
 
-async function demo() {
+export async function demo() {
     const obj = await pull('Lot_D');
     Object.keys(obj).forEach(key => {
         obj[key].forEach(space => {

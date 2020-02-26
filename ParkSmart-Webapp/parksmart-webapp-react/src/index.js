@@ -24,7 +24,7 @@ class ParkingLotD extends React.Component {
     return (
       <div>
         <img src={LotD} alt="Parking Lot D" />
-        <p>{this.state[this.lotName]}</p>
+        <p>{JSON.stringify(this.state[this.lotName])}</p>
       </div>
     );
   }
