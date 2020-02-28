@@ -39,9 +39,19 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
         if (!array_key_exists('Extra', $element)) {
             $element->Extra = '';
         }
+        
         //fix for python
+        if (!array_key_exists('Space', $element) || $element->IsOccupied == NULL) {
+            $element->Space = 0;
+        }
         if (!array_key_exists('IsOccupied', $element) || $element->IsOccupied == NULL) {
             $element->IsOccupied = 0;
+        }
+        if (!array_key_exists('Confidence', $element) || $element->Confidence == NULL) {
+            $element->Confidence = 0.0;
+        }
+        if (!array_key_exists('Type', $element) || $element->Confidence == NULL) {
+            $element->Confidence = "student";
         }
 
         //create SQL update string
