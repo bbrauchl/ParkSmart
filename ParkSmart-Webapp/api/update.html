@@ -1,23 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 500;
-        }
-        
-        td, th {
-          border: 1px solid black;
-          text-align: left;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="apis.css">
 </head>
 <body>
     <h1>ParkSmart Update API</h1>
@@ -114,65 +98,103 @@
 
     <div>
         <h3>Example (Python)</h3>
-        <div>
+        <div class="py">
             <span>
-                <span>import </span>
-                <span>requests</span>
+                <span class="op">import </span><!--
+                --><span class="var">requests</span>
             </span>
-            <br>
-            <span>
-                <span>import </span>
-                <span>json</span>
-            </span>
-            <br>
             <br>
             <span>
-                <span>url = "</span>
-                <span id="demourl"></span>
-                <span>"</span>
-            </span>
-            <br>
-            <span>update_item = {</span>
-            <br>
-            <span style="margin-left:2em">
-                <span>'Lot' </span>
-                <span>: 'Lot_D',</span>
-            </span>
-            <br>
-            <span style="margin-left:2em">
-                <span>'Space' </span>
-                <span>: 12,</span>
-            </span>
-            <br>
-            <span style="margin-left:2em">
-                <span>'IsOccupied' </span>
-                <span>: True,</span>
-            </span>
-            <br>
-            <span style="margin-left:2em">
-                <span>'Confidence' </span>
-                <span>: 0.75,</span>
-            </span>
-            <br>
-            <span style="margin-left:2em">
-                <span>'Type' </span>
-                <span>: 'student',</span>
-            </span>
-            <br>
-            <span style="margin-left:2em">
-                <span>'Extra' </span>
-                <span>: 'Parked Illegally',</span>
-            </span>
-            <br>
-            <span style="margin-left:2em">
-                <span>}</span>
+                <span class="op">import </span><!--
+                --><span class="var">json</span>
             </span>
             <br>
             <br>
             <span>
-                <span>print(requests.post(url, data={</span>
-                <span>'payload'</span>
-                <span>:json.dumps(update_item)}).text)</span>
+                <span class="var">url </span><!--
+                --><span class="op">= </span><!--
+                --><span class="str" id="demourl"></span>
+            </span>
+            <br>
+            <span class="var">update_item </span><!--
+            --><span class="op">= {</span>
+            </span>
+            <br>
+            <span>
+                <span class="tab">&#9;</span><!--
+                --><span class="str">'Lot'</span><!--
+                --><span class="op">: </span><!--
+                --><span class="str">'Lot_D'</span><!--
+                --><span class="op">,</span>
+            </span>
+            <br>
+            <span>
+                <span class="tab">&#9;</span><!--
+                --><span class="str">'Space'</span><!--
+                --><span class="op">: </span><!--
+                --><span class="num">12</span><!--
+                --><span class="op">,</span>
+            </span>
+            <br>
+            <span>
+                <span class="tab">&#9;</span><!--
+                --><span class="str">'IsOccupied'</span><!--
+                --><span class="op">: </span><!--
+                --><span class="logic">True</span><!--
+                --><span class="op">,</span>
+            </span>
+            <br>
+            <span>
+                <span class="tab">&#9;</span><!--
+                --><span class="str">'Confidence'</span><!--
+                --><span class="op">: </span><!--
+                --><span class="num">0.75</span><!--
+                --><span class="op">,</span>
+            </span>
+            <br>
+            <span>
+                <span class="tab">&#9;</span><!--
+                --><span class="str">'Type'</span><!--
+                --><span class="op">: </span><!--
+                --><span class="str">'student'</span><!--
+                --><span class="op">,</span>
+            </span>
+            <br>
+            <span>
+                <span class="tab">&#9;</span><!--
+                --><span class="str">'Extra'</span><!--
+                --><span class="op">: </span><!--
+                --><span class="str">'Parked Illegally'</span><!--
+                --><span class="op">,</span>
+            </span>
+            <br>
+            <span>
+                <span class="tab">&#9;</span><!--
+                --><span class="op">}</span>
+            </span>
+            <br>
+            <br>
+            <span>
+                <span class="func">print</span><!--
+                --><span class="op">(</span><!--
+                --><span class="var">requests</span><!--
+                --><span class="op">.</span><!--
+                --><span class="func">post</span><!--
+                --><span class="op">(</span><!--
+                --><span class="var">url</span><!--
+                --><span class="op">, </span><!--
+                --><span class="var">data</span><!--
+                --><span class="op">={</span><!--
+                --><span class="str">'payload'</span><!--
+                --><span class="op">:</span><!--
+                --><span class="var">json</span><!--
+                --><span class="op">.</span><!--
+                --><span class="func">dumps</span><!--
+                --><span class="op">(</span><!--
+                --><span class="var">update_item</span><!--
+                --><span class="op">)}).</span><!--
+                --><span class="var">text</span><!--
+                --><span class="op">)</span>
             </span>
         </div>
     </div>
@@ -182,5 +204,5 @@
 <script>
     const url = window.location.href.replace(".html", ".php");
     document.getElementById("url").innerHTML += "<br>API endpoint: <a href=" + url + ">" + url + "</a>";
-    document.getElementById("demourl").innerHTML = url;
+    document.getElementById("demourl").innerHTML = "\"" + url + "\"";
 </script>

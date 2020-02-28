@@ -1,23 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            table {
-              font-family: arial, sans-serif;
-              border-collapse: collapse;
-              width: 500;
-            }
-            
-            td, th {
-              border: 1px solid black;
-              text-align: left;
-              padding: 8px;
-            }
-            
-            tr:nth-child(even) {
-              background-color: #dddddd;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="apis.css">
     </head>
     <body>
         <h1>ParkSmart Pull API</h1>
@@ -132,50 +116,55 @@
             <h3>Example (Python)</h3>
             <div class="py">
                 <span>
-
-                    <span class="pyimport">import </span>
-                    <span class="pynormal">requests</span>
+                    <span class="op">import </span><!--
+                    --><span class="var">requests</span>
                 </span>
                 <br>
                 <span>
-                    <span class="pyimport">import </span>
-                    <span class="pynormal">json</span>
-                </span>
-                <br>
-                <br>
-                <span>
-                    <span class="pyvar">endpoint </span>
-                    <span class="pyoperator">= </span>
-                    <span id="url_2" class="pystring"></span>
-                </span>
-                <br>
-                <span>
-                    <span class="pyvar">params </span>
-                    <span class="pyoperator">= </span>
-                    <span class="pynormal">{</span>
-                    <span class="pystring">'Lot'</span>
-                    <span class="pynormal">:</span>
-                    <span class="pystring">'Lot_D'</span>
-                    <span class="pynormal">}</span>
+                    <span class="op">import </span><!--
+                    --><span class="var">json</span>
                 </span>
                 <br>
                 <br>
                 <span>
-                    <span class="pyvar">r </span>
-                    <span class="pyoperator">= </span>
-                    <span class="pynormal">requests.post(</span>
-                    <span class="pyvar">endpoint</span>
-                    <span class="pynormal">, data</span>
-                    <span class="pyoperator">=</span>
-                    <span class="pyvar">params</span>
-                    <span class="pynormal">)</span>
+                    <span class="var">endpoint </span><!--
+                    --><span class="op">= </span><!--
+                    --><span id="url_2" class="str"></span>
                 </span>
                 <br>
                 <span>
-                    <span class="pyprint">print</span>
-                    <span class="pynormal">(</span>
-                    <span class="pyvar">r</span>
-                    <span class="pynormal">.json())</span>
+                    <span class="var">params </span><!--
+                    --><span class="op">= </span><!--
+                    --><span class="op">{</span><!--
+                    --><span class="str">'Lot'</span><!--
+                    --><span class="op">:</span><!--
+                    --><span class="str">'Lot_D'</span><!--
+                    --><span class="op">}</span>
+                </span>
+                <br>
+                <br>
+                <span>
+                    <span class="var">r </span><!--
+                    --><span class="op">= </span><!--
+                    --><span class="var">requests</span><!--
+                    --><span class="op">.</span><!--
+                    --><span class="func">post</span><!--
+                    --><span class="op">(</span><!--
+                    --><span class="var">endpoint</span><!--
+                    --><span class="op">, </span><!--
+                    --><span class="var">data</span><!--
+                    --><span class="op">=</span><!--
+                    --><span class="var">params</span><!--
+                    --><span class="op">)</span>
+                </span>
+                <br>
+                <span>
+                    <span class="func">print</span><!--
+                    --><span class="op">(</span><!--
+                    --><span class="var">r</span><!--
+                    --><span class="op">.</span><!--
+                    --><span class="func">json</span><!--
+                    --><span class="op">())</span>
                 </span>
             </div>
         </div>

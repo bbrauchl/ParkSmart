@@ -1,0 +1,59 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+}
+
+td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd; 
+}
+
+.py {
+    background-color: #FFFFFF;
+    font-family: Consolas;
+    padding: 8px;
+}
+
+.py .tab {
+    white-space: pre;
+}
+
+.py .newline {
+    display: block;
+}
+
+.py .op {
+    color: #101010;
+    font-size: 12pt;
+}
+
+.py .str {
+    color: #7FBF7F;
+    font-size: 12pt;
+}
+
+.py .var {
+    color: #52C6C2;
+    font-size: 12pt;
+}
+
+.py .num {
+    color: #a99334;
+    font-size: 12pt;
+}
+
+.py .func {
+    color: rgb(0, 131, 239);
+    font-size: 12pt;
+}
+
+.py .logic {
+    color: #3d9a3d;
+    font-size: 12pt;
+}
