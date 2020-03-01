@@ -19,15 +19,15 @@ export default class ParkingSpace extends React.Component {
         console.log(this.props.status.IsOccupied)
         if (this.props.status.IsOccupied == null) {
             style.backgroundColor = "yellow";
-        } else if (this.props.status.IsOccupied) {
+        } else if (this.props.status.IsOccupied == 1) {
             style.backgroundColor = "red";
         } else {
             style.backgroundColor = "green";
         }
-        console.log(style);
+        console.log(this.props.status.Space);
         return (
             <div className="space" style={style}>
-                {this.props.status.Space}
+                <p>{this.props.status.Space}</p>
             </div>
         );
     }

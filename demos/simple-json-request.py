@@ -8,16 +8,18 @@ import random
 #test of update API
 print('Test of update API')
 print('Updating space 0')
-resp = ParkSmart.update(Lot='lot_d', Space=0, IsOccupied=True, Confidence=random.random(), Type='student', debug=True)
+for i in range(85):
+    resp = ParkSmart.update(Lot='Lot_D', Space=i, IsOccupied=True if random.randint(0,1) else False, Confidence=random.random(), Type='student' if not i in range(73, 80) else 'handicap', debug=False)
+
 print(resp.text)
 
 # test of sql call API
 print("")
 print('Test of SQL API')
-print('Calling SQL to select all of table \'lot_d\'')
+print('Calling SQL to select all of table \'Lot_D\'')
 # get the current state of the database
 try:
-    current_database = ParkSmart.sql('SELECT * FROM Lot_D', debug=True).json()
+    current_database = ParkSmart.sql('SELECT * FROM Lot_D', debug=False).json()
 except:
     print('error, could not extract server response as JSON')
 else:
@@ -42,6 +44,6 @@ test_object = {
     'integer_item': 12,
     'dictionary_item' : {'one' : 1, 'two' : 2, 'array':[1,2,3,4,'hello']}
     }
-resp = ParkSmart.echo(test_object, debug=True)
+resp = ParkSmart.echo(test_object, debug=False)
 print(resp.text)
 

@@ -28,19 +28,20 @@
 
 .space {
     position: absolute;
-    display:block;
+    display:table;
     text-align: left;
     padding: 0px;
     margin: 0px;
     color: black;
 }
 
-.space h1 {
+.space p {
     margin: 0;
-    align-content: center;
+    display: table-cell;
+    text-align: center;
     vertical-align: middle;
-    height: 100%;
-    width: 100%;
+    font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif;
 }
 
 h2 {

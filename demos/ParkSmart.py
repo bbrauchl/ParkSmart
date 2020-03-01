@@ -13,7 +13,7 @@ import json
 
 #base url for the project. Each api call will append its specific
 #interface to the call.
-ParkSmart_url = 'http://lamp.engin.umd.umich.edu/~bbrauchl/ParkSmart/'
+ParkSmart_url = 'http://lamp.engin.umd.umich.edu/~bbrauchl/'
 ParkSmart_url_local = 'http://localhost/ParkSmart/'
 
 #Format for Image Inference data

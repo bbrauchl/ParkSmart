@@ -10,6 +10,7 @@ class ParkingLot extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.state[props.lotName] = null;
     this.lotName = props.lotName;
     this.lotPath = `./images/${this.lotName}.png`;
     this.lotImage = require(`${this.lotPath}`);
@@ -18,7 +19,13 @@ class ParkingLot extends React.Component {
   }
 
   async componentDidMount() {
-    const resp = await pull(this.lotName);
+    let resp;
+    try {
+      resp = await pull(this.lotName);
+    } catch (error) {
+      resp = new Object();
+      resp[this.lotName] = null;
+    }
     console.log(resp);
     this.setState(resp);
   }

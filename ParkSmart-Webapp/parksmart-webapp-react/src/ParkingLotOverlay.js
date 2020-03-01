@@ -15,14 +15,14 @@ export default class ParkingLotOverlay extends React.Component {
     render() {
         let elements = [];
         let lotState = this.props.lotState;
-        if (lotState === null) {
+
+        console.log(lotState);
+        if (lotState == null) {
             lotState = [];
-            this.props.coords.forEach((coord, index) => {
-                console.log(index);
-                lotState.push( {Space: index} );
-            })
         }
+
         this.props.coords.forEach((coord, index) => {
+            if (lotState[index] == null) { lotState.push( {Space: index} ); }
             elements.push(<ParkingSpace key={index} coords={coord} status={lotState[index]} />);
         })
         return (
