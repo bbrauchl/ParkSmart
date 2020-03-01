@@ -21,7 +21,7 @@ DELIMITER $$
 CREATE PROCEDURE setup_table() 
 BEGIN
     DECLARE i INT DEFAULT 0;
-    WHILE i < 77 DO
+    WHILE i < 84 DO
         INSERT INTO Lot_D (Space) VALUES (i);
         SET i = i + 1;
     END WHILE;
