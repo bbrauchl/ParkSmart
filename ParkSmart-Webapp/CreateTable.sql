@@ -10,7 +10,7 @@ CREATE TABLE Lot_D (
     Space INTEGER, 
     IsOccupied BOOLEAN, 
     Confidence FLOAT, 
-    Type ENUM ('student','faculty','visitor','handicap','electirc_vehicle'), 
+    Type ENUM ('student','faculty','visitor','handicap','electric_vehicle'), 
     Extra TEXT, 
     start_timestamp TIMESTAMP(6) DEFAULT NOW() ON UPDATE NOW(), 
     end_timestamp TIMESTAMP(6) NULL
