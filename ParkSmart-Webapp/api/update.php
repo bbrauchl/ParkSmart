@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
         }
         
         //fix for python
-        if (!array_key_exists('Space', $element) || $element->IsOccupied == NULL) {
+        if (!array_key_exists('Space', $element) || $element->Space == NULL) {
             $element->Space = 0;
         }
         if (!array_key_exists('IsOccupied', $element) || $element->IsOccupied == NULL) {
