@@ -1,6 +1,6 @@
 {
   "name": "parksmart-webapp-react",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "homepage": "http://lamp.engin.umd.umich.edu/~bbrauchl/build",
   "dependencies": {
