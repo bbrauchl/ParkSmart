@@ -51,7 +51,7 @@ export async function pull_and_print(lot) {
     console.log(JSON.stringify(xhr.response));
 }
 
-export async function pull(lot) {
+export default async function pull(lot) {
     console.log("pull");
     const xhr = await pull_request(lot);
     return xhr;
