@@ -3,6 +3,9 @@ import requests
 import json
 import ParkSmart
 import random
+import time
+import sys
+import os
 
 
 #test of update_single API
@@ -66,3 +69,23 @@ test_object = {
 resp = ParkSmart.echo(test_object, debug=False)
 print(resp.text)
 
+try:
+    while True:
+        #update randomly between 0 and 2 minuites
+        time.sleep(random.randint(1,15))
+        #update states to see changing in webserver
+        multi_update_states = [{
+        'Lot' : 'Lot_D',
+        'Space' : Space,
+        'IsOccupied' : True if random.randint(0,1) else False,
+        'Confidence' : random.random(),
+        'Type' : 'electric_vehicle' if Space in range(0,4) else 'handicap' if Space in range(73, 80) else 'student',
+        } for Space in range(0,84)]
+        resp = ParkSmart.update_multi(Lot='Lot_D', states=multi_update_states, debug=False)
+        print(resp.text)
+except KeyboardInterrupt:
+    print('Interrupted')
+    try:
+        sys.exit(0)
+    except SystemExit:
+        os._exit(0)

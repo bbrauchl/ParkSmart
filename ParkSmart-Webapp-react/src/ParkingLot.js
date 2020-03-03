@@ -15,9 +15,11 @@ export default class ParkingLot extends React.Component {
     this.lotImage = require(`${this.lotPath}`);
     this.coordsPath = `./coords/${this.lotName}.json`;
     this.coords = require(`${this.coordsPath}`);
+
+    this.pullState = this.pullState.bind(this);
   }
 
-  async componentDidMount() {
+  async pullState() {
     let resp;
     try {
       resp = await pull(this.lotName);
@@ -28,6 +30,15 @@ export default class ParkingLot extends React.Component {
     console.log(resp);
     this.setState(resp);
   }
+
+  async componentDidMount() {
+    this.pullState();
+    this.interval = setInterval(this.pullState, 1000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.interval);
+  }  
 
   render() {
     console.log(this.lotName);
