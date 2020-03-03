@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/~bbrauchl/build/static/css/main.2070231d.chunk.css",
-    "main.js": "/~bbrauchl/build/static/js/main.17802fd5.chunk.js",
-    "main.js.map": "/~bbrauchl/build/static/js/main.17802fd5.chunk.js.map",
+    "main.js": "/~bbrauchl/build/static/js/main.cea2884a.chunk.js",
+    "main.js.map": "/~bbrauchl/build/static/js/main.cea2884a.chunk.js.map",
     "runtime-main.js": "/~bbrauchl/build/static/js/runtime-main.4d3d5641.js",
     "runtime-main.js.map": "/~bbrauchl/build/static/js/runtime-main.4d3d5641.js.map",
     "static/js/2.1d0e6caf.chunk.js": "/~bbrauchl/build/static/js/2.1d0e6caf.chunk.js",
     "static/js/2.1d0e6caf.chunk.js.map": "/~bbrauchl/build/static/js/2.1d0e6caf.chunk.js.map",
     "index.html": "/~bbrauchl/build/index.html",
-    "precache-manifest.898a0d2ebd1d54bd45796af36f06cb6f.js": "/~bbrauchl/build/precache-manifest.898a0d2ebd1d54bd45796af36f06cb6f.js",
+    "precache-manifest.7ad8fc66edc938fdcb733329927768ff.js": "/~bbrauchl/build/precache-manifest.7ad8fc66edc938fdcb733329927768ff.js",
     "service-worker.js": "/~bbrauchl/build/service-worker.js",
     "static/css/main.2070231d.chunk.css.map": "/~bbrauchl/build/static/css/main.2070231d.chunk.css.map",
     "static/js/2.1d0e6caf.chunk.js.LICENSE.txt": "/~bbrauchl/build/static/js/2.1d0e6caf.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.4d3d5641.js",
     "static/js/2.1d0e6caf.chunk.js",
     "static/css/main.2070231d.chunk.css",
-    "static/js/main.17802fd5.chunk.js"
+    "static/js/main.cea2884a.chunk.js"
   ]
 }
