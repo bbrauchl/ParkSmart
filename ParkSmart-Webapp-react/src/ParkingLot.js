@@ -17,6 +17,19 @@ export default class ParkingLot extends React.Component {
     this.coords = require(`${this.coordsPath}`);
 
     this.pollState = this.pollState.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+  }
+
+  async onFocus() {
+    this.pollState();
+    clearInterval(this.interval);
+    this.interval = setInterval(this.pollState, 1000);
+  }
+
+  async onBlur() {
+    clearInterval(this.interval);
+    this.interval = setInterval(this.pollState, 10000);
   }
 
   async pollState() {
@@ -33,11 +46,15 @@ export default class ParkingLot extends React.Component {
 
   async componentDidMount() {
     this.pollState();
-    this.interval = setInterval(this.pollState, 10000);
+    this.interval = setInterval(this.pollState, 1000);
+    window.addEventListener("focus", this.onFocus);
+    window.addEventListener("blur", this.onBlur);
   }
 
   componentWillUnmount(){
     clearInterval(this.interval);
+    window.removeEventListener("focus", this.onFocus);
+    window.addEventListener("blur", this.onBlur);
   }  
 
   render() {
