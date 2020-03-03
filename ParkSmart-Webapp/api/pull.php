@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             $conn->close();
             die("Error! User specified Parking lot name that does not exist in the database!");
         }
-        $sql = "SELECT * FROM ".$lot. " WHERE start_timestamp <= NOW() && end_timestamp > NOW();";
+        $sql = "SELECT * FROM ".$lot. " WHERE end_timestamp >= NOW();";
         $result = $conn->query($sql); 
         if(!$result) {
             $conn->close();
@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
         $response->{$lot} = $resultArray;
         $result->close();
     }
+    
     $conn->close();
     
     //set the correct headers for a json response

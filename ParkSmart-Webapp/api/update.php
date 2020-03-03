@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
     }
 
     $conn = get_sql_connection($sql_server);
-    $conn->autocommit(false);  
+    $conn->query("START TRANSACTION");
 
     foreach ($payload as $element) { 
 
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
         }
     }
 
-    $conn->commit();
+    $conn->query("COMMIT");
     $conn->close();
 
     echo "Success!";
