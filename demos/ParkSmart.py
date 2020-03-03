@@ -33,15 +33,16 @@ def update_single(Lot : str, Space : int, IsOccupied : bool, Confidence : float 
         'Type' : Type,
         'Extra' : Extra if type(Extra) is str else '',
         }]
-    return requests.post(api_url, data={'payload':json.dumps(item)} )
+    return update_multi(states=item, debug=debug))
 
-def update_multi(Lot : str, states : list, debug : bool = False):
+def update_multi(states : list, debug : bool = False):
     api_url = ParkSmart_url_local if (debug) else ParkSmart_url
     api_url += 'api/update.php'
     
     try: #check that the provided update is valid
         for state in states:
             assert (type(state) is dict), ("Error! each state within states array should be dict")
+            assert (type(state['Lot'] is str), ("Error! state['Lot'] should be provided as a string"))
             assert (type(state['Space']) is int), ("Error! state['Space'] should be provided as an int")
             assert (type(state['IsOccupied']) in [int, bool]), ("Error! state['IsOccupied'] should be bool")
             assert (type(state['Confidence']) is float), ("Error! state['Confidence' should be float")
