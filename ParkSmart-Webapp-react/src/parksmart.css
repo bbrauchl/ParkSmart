@@ -1,0 +1,49 @@
+.lot {
+    position: relative;
+    width: 75vw;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+}
+
+.lot img {
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: auto;
+}
+
+.space {
+    position: absolute;
+    display:table;
+    text-align: left;
+    padding: 0px;
+    margin: 0px;
+    color: black;
+}
+
+.space p {
+    margin: 0;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+h2 {
+
+}
