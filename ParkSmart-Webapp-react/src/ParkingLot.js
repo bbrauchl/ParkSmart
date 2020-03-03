@@ -16,10 +16,10 @@ export default class ParkingLot extends React.Component {
     this.coordsPath = `./coords/${this.lotName}.json`;
     this.coords = require(`${this.coordsPath}`);
 
-    this.pullState = this.pullState.bind(this);
+    this.pollState = this.pollState.bind(this);
   }
 
-  async pullState() {
+  async pollState() {
     let resp;
     try {
       resp = await pull(this.lotName);
@@ -32,8 +32,8 @@ export default class ParkingLot extends React.Component {
   }
 
   async componentDidMount() {
-    this.pullState();
-    this.interval = setInterval(this.pullState, 1000);
+    this.pollState();
+    this.interval = setInterval(this.pollState, 10000);
   }
 
   componentWillUnmount(){
