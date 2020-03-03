@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ParkingSpace from './parkingSpace.js';
+import ParkingSpace from './ParkingSpace.js';
 
 import './parksmart.css';
 
 export default class ParkingLotOverlay extends React.Component {
-    constructor(props) {
-        super(props);
-
-        
-    }
     
     render() {
         let elements = [];

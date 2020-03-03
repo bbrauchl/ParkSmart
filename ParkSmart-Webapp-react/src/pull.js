@@ -14,14 +14,7 @@ function pull_request(lot, getIsOccupied = true, getConfidence = false, getType 
     return new Promise(function (resolve, reject) {
         const endpoint = get_url() + 'api/pull.php';
         console.log(endpoint);
-        const payload = {"lot":lot,
-            "getIsOccupied":getIsOccupied,
-            "getConfidence":getConfidence,
-            "getType":getType,
-            "getExtra":getExtra,
-            "getStartTimestamp":getStartTimestamp,
-            "getEndTimestamp":getEndTimestamp,
-                    };
+        const payload = {"lot":lot};
         const xhr = new XMLHttpRequest();
         xhr.open("POST", endpoint, true);
         xhr.responseType = 'json';
