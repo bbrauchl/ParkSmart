@@ -42,7 +42,7 @@ def update_multi(Lot : str, states : list, debug : bool = False):
     try: #check that the provided update is valid
         for state in states:
             assert (type(state) is dict), ("Error! each state within states array should be dict")
-            assert (type(state['Space']) is int), ("Error! state['Space' should be provided as an int")
+            assert (type(state['Space']) is int), ("Error! state['Space'] should be provided as an int")
             assert (type(state['IsOccupied']) in [int, bool]), ("Error! state['IsOccupied'] should be bool")
             assert (type(state['Confidence']) is float), ("Error! state['Confidence' should be float")
             assert (type(state['Type']) is str and state['Type'] in ['student', 'faculty', 'visitor', 'handicap', 'electric_vehicle']), ("Error! state['Type'] should be one of the following strings: ['student', 'faculty', 'visitor', 'handicap', 'electric_vehicle']")
