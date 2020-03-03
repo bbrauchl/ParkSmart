@@ -12,11 +12,11 @@ export default class ParkingSpace extends React.Component {
             height: this.props.coords.height,
             width: this.props.coords.width,
         }
-        console.log(this.props.status.IsOccupied)
+        console.log(typeof this.props.status.IsOccupied)
         if (this.props.status.IsOccupied == null) {
             //colored yellow if there is no data. This should also produce a warning.
             style.backgroundColor = `rgb(255,255,0,0.3)`;
-        } else if (this.props.status.IsOccupied === 1) {
+        } else if (this.props.status.IsOccupied == 1) {
             //colored red if the spaces are occupied
             //use background alpha channel to indicate perdiction Confidence
             style.backgroundColor = `rgb(255,0,0,${0.3 + this.props.status.Confidence*.7})`;
