@@ -27,7 +27,7 @@ multi_update_states = [{
         'Confidence' : random.random(),
         'Type' : 'electric_vehicle' if Space in range(0,4) else 'handicap' if Space in range(73, 80) else 'student',
         } for Space in range(1,84)]
-resp = ParkSmart.update_multi(Lot='Lot_D', states=multi_update_states, debug=False)
+resp = ParkSmart.update_multi(states=multi_update_states, debug=False)
 print(resp.text)
 
 
@@ -78,7 +78,7 @@ try:
         'Confidence' : random.random(),
         'Type' : 'electric_vehicle' if Space in range(0,4) else 'handicap' if Space in range(73, 80) else 'student',
         } for Space in range(0, 84)]
-        resp = ParkSmart.update_multi(Lot='Lot_D', states=multi_update_states, debug=False)
+        resp = ParkSmart.update_multi(states=multi_update_states, debug=False)
         print(resp.text)
 except KeyboardInterrupt:
     print('Interrupted')

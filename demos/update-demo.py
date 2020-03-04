@@ -18,7 +18,7 @@ from random import *
 # string corrisponding to the database name of the lot
 Lot = 'Lot_D' 
 # Integer number corrisponding to the space ID.
-Space = randi,nt(0, 83)
+Space = randint(0, 83)
 # bool that is true when the associated space is occupied
 IsOccupied = True if randint(0,1) else False 
 # float between 0 and 1 representing how confident the model is in the prediction
@@ -56,7 +56,7 @@ update_item = [
      'Space': 14,
      'IsOccupied': False,
      'Confidence': 0.99,
-     'Type': 'vistor',
+     'Type': 'visitor',
      #No extra information
     }
 ]
@@ -72,9 +72,8 @@ update_item = [
      'Space': i,
      'IsOccupied': True if randint(0,1) == 1 else False,
      'Confidence': random(),
-     'Type': 'Type' : 'electric_vehicle' if Space in range(0,4) else 'handicap' if Space in range(73, 80) else 'student',
+     'Type': 'electric_vehicle' if i in range(0,4) else 'handicap' if i in range(73, 80) else 'student',
      } for i in range(30,70)]
-
 ParkSmart.update_multi(update_item)
 
 
