@@ -33,7 +33,7 @@ def update_single(Lot : str, Space : int, IsOccupied : bool, Confidence : float 
         'Type' : Type,
         'Extra' : Extra if type(Extra) is str else '',
         }]
-    return update_multi(states=item, debug=debug))
+    return update_multi(states=item, debug=debug)
 
 def update_multi(states : list, debug : bool = False):
     api_url = ParkSmart_url_local if (debug) else ParkSmart_url
