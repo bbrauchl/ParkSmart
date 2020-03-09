@@ -32,6 +32,7 @@
     text-align: left;
     padding: 0px;
     margin: 0px;
+    font-size: 0.5vmin;
     color: black;
 }
 
@@ -40,10 +41,9 @@
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+    font-size: 1.2vmin;
     font-weight: bold;
     font-family: "Arial Black", Gadget, sans-serif;
-    font-size: 8px;
-    font-size: 4vw;
 }
 
 h2 {
