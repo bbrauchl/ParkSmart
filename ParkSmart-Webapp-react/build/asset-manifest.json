@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/~bbrauchl/build/static/css/main.d645177e.chunk.css",
-    "main.js": "/~bbrauchl/build/static/js/main.cea2884a.chunk.js",
-    "main.js.map": "/~bbrauchl/build/static/js/main.cea2884a.chunk.js.map",
+    "main.js": "/~bbrauchl/build/static/js/main.42f958b0.chunk.js",
+    "main.js.map": "/~bbrauchl/build/static/js/main.42f958b0.chunk.js.map",
     "runtime-main.js": "/~bbrauchl/build/static/js/runtime-main.4d3d5641.js",
     "runtime-main.js.map": "/~bbrauchl/build/static/js/runtime-main.4d3d5641.js.map",
-    "static/js/2.1d0e6caf.chunk.js": "/~bbrauchl/build/static/js/2.1d0e6caf.chunk.js",
-    "static/js/2.1d0e6caf.chunk.js.map": "/~bbrauchl/build/static/js/2.1d0e6caf.chunk.js.map",
+    "static/js/2.c5b4319a.chunk.js": "/~bbrauchl/build/static/js/2.c5b4319a.chunk.js",
+    "static/js/2.c5b4319a.chunk.js.map": "/~bbrauchl/build/static/js/2.c5b4319a.chunk.js.map",
     "index.html": "/~bbrauchl/build/index.html",
-    "precache-manifest.0f8f5aacca2a93c20b882d38f7f1febd.js": "/~bbrauchl/build/precache-manifest.0f8f5aacca2a93c20b882d38f7f1febd.js",
+    "precache-manifest.826c7a854637cfef02f72ce9fd3be8b6.js": "/~bbrauchl/build/precache-manifest.826c7a854637cfef02f72ce9fd3be8b6.js",
     "service-worker.js": "/~bbrauchl/build/service-worker.js",
     "static/css/main.d645177e.chunk.css.map": "/~bbrauchl/build/static/css/main.d645177e.chunk.css.map",
-    "static/js/2.1d0e6caf.chunk.js.LICENSE.txt": "/~bbrauchl/build/static/js/2.1d0e6caf.chunk.js.LICENSE.txt",
+    "static/js/2.c5b4319a.chunk.js.LICENSE.txt": "/~bbrauchl/build/static/js/2.c5b4319a.chunk.js.LICENSE.txt",
     "static/media/Lot_D.png": "/~bbrauchl/build/static/media/Lot_D.251c9602.png"
   },
   "entrypoints": [
     "static/js/runtime-main.4d3d5641.js",
-    "static/js/2.1d0e6caf.chunk.js",
+    "static/js/2.c5b4319a.chunk.js",
     "static/css/main.d645177e.chunk.css",
-    "static/js/main.cea2884a.chunk.js"
+    "static/js/main.42f958b0.chunk.js"
   ]
 }
