@@ -31,29 +31,6 @@ resp = ParkSmart.update_multi(states=multi_update_states, debug=False)
 print(resp.text)
 
 
-
-# test of sql call API
-print("")
-print('Test of SQL API')
-print('Calling SQL to select all of table \'Lot_D\'')
-# get the current state of the database
-try:
-    current_database = ParkSmart.sql('SELECT * FROM Lot_D', debug=False).json()
-except:
-    print('error, could not extract server response as JSON')
-else:
-    print('Success!')
-    print("")  
-    print('printing{} contents of received object:'.format(" some of" if len(current_database) > 6 else ""))
-    # get the current state of Parking space 0 (the one that was updated above)
-    if len(current_database) > 6:
-        print(current_database[:3])
-        print("...")
-        print(current_database[-3:])
-    else:
-        print(current_database)
-
-
 #test of the echo api
 print("")
 print('Test of echo API')
