@@ -65,6 +65,7 @@ err_cnt = 0
 success_cnt = 0
 trials = trial_length/trial_period
 for i in range(math.ceil(trials)):
+    time.sleep(trial_period)
     try:
         resp = requests.get("http://lamp.engin.umd.umich.edu/~bbrauchl/build/index.html")
     except requests.HTTPError as err:

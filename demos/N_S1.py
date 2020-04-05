@@ -61,6 +61,13 @@ test_IsOccupied = [True, 1, 1.0, '1', 'one', 'first', '', []]
 test_Confidence = [0.5, "50%", '0.5', 'half', None, '', []]
 test_Type = ['student', 'visitor', 'Student', 'FaCuLtY', None, 12, '', []]
 test_Extra = ["hello", 123123, [], True, '']
+                
+print("testing the pull api")
+for Lot in test_Lot:
+    resp = requests.post("http://lamp.engin.umd.umich.edu/~bbrauchl/api/pull.php", data={'Lot':Lot})
+    print("response to {}: {}".format(Lot, resp.text))
+
+print("testing the update api")
 
 for Lot in test_Lot:
     for Space in test_Space:
@@ -78,3 +85,5 @@ for Lot in test_Lot:
                                 }]
                         resp = requests.post("http://lamp.engin.umd.umich.edu/~bbrauchl/api/update.php", data={'payload':json.dumps(item)})
                         print("response to {}: {}".format(item[0], resp.text))
+
+print("----------End API ERROR test-------------")
