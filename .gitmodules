@@ -1,0 +1,3 @@
+[submodule "ParkSmart-AndroidApp"]
+	path = ParkSmart-AndroidApp
+	url = https://github.com/amrawski/ParkSmart_App.git

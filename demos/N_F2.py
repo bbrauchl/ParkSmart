@@ -59,7 +59,7 @@ print("----------Start Access test-------------")
 #the device should be consistently accessable. Drops in access could be detramental to the system
 #this test will test the access to the server over a period of time
 
-trial_length = 12 * 60 * 60 * 60 # 12 hour test (in seconds)
+trial_length = 4 * 60 * 60 * 60 # 12 hour test (in seconds)
 trial_period = 60 # each access will be 1 minuite apart.
 err_cnt = 0
 success_cnt = 0
