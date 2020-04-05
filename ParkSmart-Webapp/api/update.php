@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
         $sql_query .= "VALUES ($element->Space, $element->IsOccupied, $element->Confidence, '$element->Type', '$element->Extra');";
         $result = $conn->query($sql_query);
         if(!$result) {
-            echo $conn->error_list;
+            echo json_encode($conn->error_list);
             $conn->query("ROLLBACK");
             $conn->close();
             throw new Exception("SQL Update Failed");
