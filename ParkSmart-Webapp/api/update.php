@@ -57,18 +57,92 @@ if ($_SERVER['REQUEST_METHOD']  === 'POST') {
             $element->Confidence = "student";
         }
 
-        //expire previous entry
-        $sql_query = "UPDATE " . $element->Lot . " SET end_timestamp = NOW() WHERE Space = $element->Space AND end_timestamp > NOW();";
-        $result = $conn->query($sql_query);
-        //set new entry
-        $sql_query = "INSERT INTO ".$element->Lot."(Space, IsOccupied, Confidence, Type, Extra) ";
-        $sql_query .= "VALUES ($element->Space, $element->IsOccupied, $element->Confidence, '$element->Type', '$element->Extra');";
+        //Grab the current entries for the historic table
+        $sql_query = "SELECT * FROM $element->Lot WHERE Space = $element->Space;";
         $result = $conn->query($sql_query);
         if(!$result) {
             echo json_encode($conn->error_list);
             $conn->query("ROLLBACK");
             $conn->close();
-            throw new Exception("SQL Update Failed");
+            throw new Exception("SQL Select Failed");
+        }
+        $expired_datas = [];
+        while($row = $result->fetch_assoc()) {
+            $expired_datas[] = $row;
+        }
+
+        if(sizeof($expired_datas) != 1) {        
+            //something went wrong, more there is not the right amount of entries in the main table.
+            //delete all in the main table
+            $sql_query = "DELETE FROM $element->Lot WHERE Space = $element->Space;";
+            $result = $conn->query($sql_query);
+            if(!$result) {
+                echo json_encode($conn->error_list);
+                $conn->query("ROLLBACK");
+                $conn->close();
+                throw new Exception("SQL Select Failed");
+            }
+            //insert new into main table
+            $sql_query = "INSERT INTO $element->Lot (Space, IsOccupied, Confidence, Type, Extra) ";
+            $sql_query .= "VALUES ($element->Space, $element->IsOccupied, $element->Confidence, '$element->Type', '$element->Extra');";
+            $result = $conn->query($sql_query);
+            if(!$result) {
+                echo json_encode($conn->error_list);
+                $conn->query("ROLLBACK");
+                $conn->close();
+                throw new Exception("SQL Insert Failed");
+            }
+        }
+        else {
+            //expected behavior
+            $sql_query = "UPDATE $element->Lot SET";
+            $sql_query .= " IsOccupied = $element->IsOccupied, Confidence = $element->Confidence, Type = '$element->Type', Extra = '$element->Extra'";
+            $sql_query .= " WHERE Space = $element->Space;";
+            $result = $conn->query($sql_query);
+            //echo $sql_query;
+            if(!$result) {
+                echo json_encode($conn->error_list);
+                $conn->query("ROLLBACK");
+                $conn->close();
+                throw new Exception("SQL Update Failed");
+            }
+        }
+
+        if(sizeof($expired_datas) > 0) {
+            //update the historic table
+            foreach($expired_datas as $expired_data) {
+                //set historic entry
+                if (!array_key_exists('Space', $expired_data) || $expired_data['Space'] == NULL) {
+                    $expired_data['Space'] = 0;
+                }
+                if (!array_key_exists('IsOccupied', $expired_data) || $expired_data['IsOccupied'] == NULL) {
+                    $expired_data['IsOccupied'] = 0;
+                }
+                if (!array_key_exists('Confidence', $expired_data) || $expired_data['Confidence'] == NULL) {
+                    $expired_data['Confidence'] = 0.0;
+                }
+                if (!array_key_exists('Type', $expired_data) || $expired_data['Type'] == NULL) {
+                    $expired_data['Type'] = "student";
+                }
+                if (!array_key_exists('start_timestamp', $expired_data) || $expired_data['start_timestamp'] == NULL) {
+                    $expired_data['start_timestamp'] = '';//date($expired_data['start_timestamp']);
+                }
+                if (!array_key_exists('end_timestamp', $expired_data) || $expired_data['end_timestamp'] == NULL) {
+                    $expired_data['end_timestamp'] = '';//date($expired_data['end_timestamp']'');
+                }
+
+                $sql_query = "INSERT INTO {$element->Lot}_hist (Space, IsOccupied, Confidence, Type, Extra, start_timestamp, end_timestamp) ";
+                $sql_query .= "VALUES ($expired_data[Space], $expired_data[IsOccupied], $expired_data[Confidence], '$expired_data[Type]',";
+                $sql_query .= "'$expired_data[Extra]', '$expired_data[start_timestamp]', '$expired_data[end_timestamp]');";
+                $result = $conn->query($sql_query);
+                if(!$result) {
+                    echo $sql_query;
+                    echo json_encode($conn->error_list);
+                    $conn->query("ROLLBACK");
+                    $conn->close();
+                    throw new Exception("SQL Insert Failed");
+                }
+            }
         }
     }
 
