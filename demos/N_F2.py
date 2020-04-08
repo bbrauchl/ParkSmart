@@ -77,9 +77,9 @@ for i in range(math.ceil(trials)):
     else:
         success_cnt += 1
         # print success message every 1000 trials
-        if (i % 1000 == 0):
+        if (i % 10 == 0):
             print ("Trial {} successful".format(i))
 
 print("Total Errors: {}".format(err_cnt))
-print("Accessablility: {}%".format(success_cnt/trials))
+print("Accessablility: {}%".format(100*success_cnt/trials))
 print("----------End Access test-------------")
